@@ -1,4 +1,5 @@
 # importa o plugin numpy que manipula as matrizes de modo mais facil no python
+from texttable import Texttable
 import numpy as np
 np.set_printoptions(linewidth=120)
 
@@ -37,23 +38,23 @@ yd = np.array([[1, -1, -1, -1, -1, -1, -1, -1, -1, -1], # 0
 
 #Gerar W aleatorio de forma elegante
 #gera uma matriz 10 linhas com 26 colunas (ou neste caso 10 vetores com 26 elementos) contendo apenas 2 valores (0 ou 1)
-#w = np.random.randint(2, size=(10, 26))
+w = np.random.randint(2, size=(10, 26))
 
 #troca a matriz(array) w aonde o valor dentro dela for zero por -1
-#np.place(w, w==0, [-1])
+np.place(w, w==0, [-1])
 
 # Geração "na mao" do W, que é a sinapse aleatória usada para treinar minha rede.
 
-w = np.array([[1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1],
-              [1, -1, 1, 1, -1, 1, -1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1],
-              [-1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1],
-              [1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, 1, 1, -1],
-              [-1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1],
-              [1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1],
-              [-1, -1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1],
-              [1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, 1, -1, 1],
-              [-1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1],
-              [-1, -1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1]])
+# w = np.array([[1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1],
+#               [1, -1, 1, 1, -1, 1, -1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1],
+#               [-1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1],
+#               [1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, 1, 1, -1],
+#               [-1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1],
+#               [1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1],
+#               [-1, -1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1],
+#               [1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, 1, -1, 1],
+#               [-1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1],
+#               [-1, -1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1]])
 
 
 #Variaveis de apoio
@@ -213,7 +214,7 @@ while escolha != 3:
         #O Bloco a seguir recebe os valores do usuario e aloca e um vetor, trata-se de uma inserção chata pra caceta, mas nao tem outro jeito
         #Caso voce descomentou o bloco anterior lembresse de comentar este aqui.
 
-        # Preencher vetor X
+        #Preencher vetor X
         vetorUsuario = np.array([[]])
         i = 0
         for apoio in range(0, 26):
@@ -238,14 +239,28 @@ while escolha != 3:
         # Encontrar Y  -------------------------------------------------------------
 
         i = 0
-        #print(vetorSomado)
         for apoio in vetorSomado:
             if vetorSomado[i] > 0:
                 yEncontrado = np.append(yEncontrado, [1])
             else:
                 yEncontrado = np.append(yEncontrado, [-1])
             i = i + 1
-        print(yEncontrado)
+        #print(yEncontrado)
 
         numero = yEncontrado.tolist().index(1)
         print("o Vetor informado correponde ao numero: ", numero)
+
+
+        # Exibir desenho
+
+        # matriz = np.array(vetorUsuario)
+        # remover = [0]
+        # matriz = np.delete(matriz, remover)
+        # map(str, matriz)
+        # np.place(matriz, matriz == -1, ["x"])
+        # np.place(matriz, matriz == 1, [0])
+        #
+        # print(matriz)
+        #
+        # # t = Texttable()
+        # # t.add_row(vetorUsuario)
