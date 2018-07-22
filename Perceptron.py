@@ -1,5 +1,5 @@
 # importa o plugin numpy que manipula as matrizes de modo mais facil no python
-from texttable import Texttable
+
 import numpy as np
 np.set_printoptions(linewidth=120)
 
@@ -182,50 +182,57 @@ while escolha != 3:
 
 
     elif escolha == 2:
-        #Descomente o bloco abaixo para testar, nele coloquei um menu onde voce escolhe vetore de 0 a 9 para testar se a rede funciona
-        # sao os mesmos valores do vetor X LÁ DO COMEÇO, só que separado, com a rede funcionando perfeitamente o resultado W deverá ser
-        # sempre o mesmo vetor inserido X, no caso o erro será zero e o Y encontrado igual ao Y desejado indicando que a rede nao aprendeu
-        # mais nada, pois nao errou
+        print("Voce deseja usar vetores de treinamento ou informar um novo?")
+        resposta = int(input("Digite 1 para usar os de treinamento ou 2 para informar novo vetor \n"))
+        if resposta == 1:
+            # O bloco abaixo para testar, nele coloquei um menu onde voce escolhe vetore de 0 a 9 para testar se a rede funciona
+            # sao os mesmos valores do vetor X LÁ DO COMEÇO, só que separado, com a rede funcionando perfeitamente o resultado W deverá ser
+            # sempre o mesmo vetor inserido X, no caso o erro será zero e o Y encontrado igual ao Y desejado indicando que a rede nao aprendeu
+            # mais nada, pois nao errou
 
-        ####################################################################################################################################
-        # debugar = int(input(" Deseja DEBUGAR? 0 ..... 9 \n"))
-        # if debugar == 0:
-        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, -1]])
-        # if debugar == 1:
-        #     vetorUsuario = np.array([[1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1]])
-        # if debugar == 2:
-        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1]])
-        # if debugar == 3:
-        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1]])
-        # if debugar == 4:
-        #     vetorUsuario = np.array([[1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1]])
-        # if debugar == 5:
-        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1]])
-        # if debugar == 6:
-        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1]])
-        # if debugar == 7:
-        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1]])
-        # if debugar == 8:
-        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1]])
-        # if debugar == 9:
-        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1]])
-        ####################################################################################################################################
+            ####################################################################################################################################
+            debugar = int(input(" Escolha um numero de 0 até 9 \n"))
+            if debugar == 0:
+                vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, -1]])
+            if debugar == 1:
+                vetorUsuario = np.array([[1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1]])
+            if debugar == 2:
+                vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1]])
+            if debugar == 3:
+                vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1]])
+            if debugar == 4:
+                vetorUsuario = np.array([[1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1]])
+            if debugar == 5:
+                vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1]])
+            if debugar == 6:
+                vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1]])
+            if debugar == 7:
+                vetorUsuario = np.array([[1, -1, 1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1]])
+            if debugar == 8:
+                vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1]])
+            if debugar == 9:
+                vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1]])
 
-        #O Bloco a seguir recebe os valores do usuario e aloca e um vetor, trata-se de uma inserção chata pra caceta, mas nao tem outro jeito
-        #Caso voce descomentou o bloco anterior lembresse de comentar este aqui.
+            ####################################################################################################################################
 
-        #Preencher vetor X
-        vetorUsuario = np.array([[]])
-        i = 0
-        for apoio in range(0, 26):
-            if i == 0:
-                valorDeX = int(1)
-            else:
-                valorDeX = int(input("Informe o valor de x%d " % i))
-            vetorUsuario = np.append(vetorUsuario, [valorDeX])
-            i = i+1
+            #O Bloco a seguir recebe os valores do usuario e aloca e um vetor, trata-se de uma inserção chata pra caceta, mas nao tem outro jeito
+            #Caso voce descomentou o bloco anterior lembresse de comentar este aqui.
 
-        # Iniciar vetores ------------------------------------------------------------
+            ####################################################################################################################################
+            #Preencher vetor X
+        else:
+            vetorUsuario = np.array([[]])
+            i = 0
+            for apoio in range(0, 26):
+                if i == 0:
+                    valorDeX = int(1)
+                else:
+                    valorDeX = int(input("Informe o valor de x%d " % i))
+                vetorUsuario = np.append(vetorUsuario, [valorDeX])
+                i = i+1
+            ####################################################################################################################################
+
+       # Iniciar vetores ------------------------------------------------------------
         instante = 0
         vetorSomado = np.array([[]])
         yEncontrado = np.array([[]])
@@ -253,14 +260,20 @@ while escolha != 3:
 
         # Exibir desenho
 
-        # matriz = np.array(vetorUsuario)
-        # remover = [0]
-        # matriz = np.delete(matriz, remover)
-        # map(str, matriz)
-        # np.place(matriz, matriz == -1, ["x"])
-        # np.place(matriz, matriz == 1, [0])
-        #
-        # print(matriz)
-        #
-        # # t = Texttable()
-        # # t.add_row(vetorUsuario)
+        matriz = np.array(vetorUsuario)
+        remover = [0]
+        matriz = np.delete(matriz, remover)
+        matriz = matriz.astype(str)
+
+        if resposta == 1:
+            np.place(matriz, matriz == "-1", [" "])
+            np.place(matriz, matriz == "1", ["X"])
+        else:
+            np.place(matriz, matriz == "-1.0", [" "])
+            np.place(matriz, matriz == "1.0", ["X"])
+        #print(matriz)
+
+        print("")
+        print(np.reshape(matriz, (5,5)))
+        print("")
+
