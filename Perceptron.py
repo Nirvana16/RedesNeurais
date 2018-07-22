@@ -1,5 +1,6 @@
 # importa o plugin numpy que manipula as matrizes de modo mais facil no python
 import numpy as np
+np.set_printoptions(linewidth=120)
 
 # Estou criando um array de arrays, é como se fosse uma matriz, porém dentro deste array eu tenho outro(vetores)
 # linha deste array, ou seja cada elemnto deste array x, contem um vetor de amostras de X, é como se em cada linha
@@ -36,23 +37,23 @@ yd = np.array([[1, -1, -1, -1, -1, -1, -1, -1, -1, -1], # 0
 
 #Gerar W aleatorio de forma elegante
 #gera uma matriz 10 linhas com 26 colunas (ou neste caso 10 vetores com 26 elementos) contendo apenas 2 valores (0 ou 1)
-w = np.random.randint(2, size=(10, 26))
+#w = np.random.randint(2, size=(10, 26))
 
 #troca a matriz(array) w aonde o valor dentro dela for zero por -1
-np.place(w, w==0, [-1])
+#np.place(w, w==0, [-1])
 
 # Geração "na mao" do W, que é a sinapse aleatória usada para treinar minha rede.
 
-# w = np.array([[1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1],
-#               [1, -1, 1, 1, -1, 1, -1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1],
-#               [-1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1],
-#               [1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, 1, 1, -1],
-#               [-1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1],
-#               [1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1],
-#               [-1, -1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1],
-#               [1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, 1, -1, 1],
-#               [-1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1],
-#               [-1, -1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1]])
+w = np.array([[1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1],
+              [1, -1, 1, 1, -1, 1, -1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1],
+              [-1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1],
+              [1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, 1, 1, -1],
+              [-1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1],
+              [1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1],
+              [-1, -1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1],
+              [1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, 1, -1, 1],
+              [-1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1],
+              [-1, -1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1]])
 
 
 #Variaveis de apoio
@@ -64,7 +65,8 @@ erroMedioEpocaGeral = np.array([[]])
 sigma = 0.5
 
 # Minha constante para erro maximo que aceito em minha rede
-erroMaximo = 0.04
+#erroMaximo = 0.04
+erroMaximo = 0.00000
 
 # Epoca inicial
 epoca = 1
@@ -179,49 +181,64 @@ while escolha != 3:
 
 
     elif escolha == 2:
-        debugar = int(input("DEBUGAR? 0 ..... 9"))
-        if debugar == 0:
-            vetorUsuario = np.array([[1, 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1]])
-        if debugar == 1:
-            vetorUsuario = np.array([[1, -1, 1, 1, -1, 1, -1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1]])
-        if debugar == 2:
-            vetorUsuario = np.array([[-1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1]])
-        if debugar == 3:
-            vetorUsuario = np.array([[1, 1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, 1, 1, -1]])
-        if debugar == 4:
-            vetorUsuario = np.array([[-1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, 1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1]])
-        if debugar == 5:
-            vetorUsuario = np.array([[1, 1, 1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1]])
-        if debugar == 6:
-            vetorUsuario = np.array([[-1, -1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1]])
-        if debugar == 7:
-            vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, 1, -1, 1]])
-        if debugar == 8:
-            vetorUsuario = np.array([[-1, -1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1]])
-        if debugar == 9:
-            vetorUsuario = np.array([[-1, -1, 1, 1, -1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1]])
+        #Descomente o bloco abaixo para testar, nele coloquei um menu onde voce escolhe vetore de 0 a 9 para testar se a rede funciona
+        # sao os mesmos valores do vetor X LÁ DO COMEÇO, só que separado, com a rede funcionando perfeitamente o resultado W deverá ser
+        # sempre o mesmo vetor inserido X, no caso o erro será zero e o Y encontrado igual ao Y desejado indicando que a rede nao aprendeu
+        # mais nada, pois nao errou
 
-        # 7
-        # vetorUsuario = np.array([[]])
-        # i = 1
-        # for apoio in range(0, 25):
-        #     valorDeX = int(input("Informe o valor de x%d " % i))
-        #     vetorUsuario = np.append(vetorUsuario, [valorDeX])
-        #     i = i+1
-        # treinamento ------------------------------------------------------------
+        ####################################################################################################################################
+        # debugar = int(input(" Deseja DEBUGAR? 0 ..... 9 \n"))
+        # if debugar == 0:
+        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, -1]])
+        # if debugar == 1:
+        #     vetorUsuario = np.array([[1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1]])
+        # if debugar == 2:
+        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1]])
+        # if debugar == 3:
+        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1]])
+        # if debugar == 4:
+        #     vetorUsuario = np.array([[1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1]])
+        # if debugar == 5:
+        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1]])
+        # if debugar == 6:
+        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1]])
+        # if debugar == 7:
+        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1]])
+        # if debugar == 8:
+        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1]])
+        # if debugar == 9:
+        #     vetorUsuario = np.array([[1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1]])
+        ####################################################################################################################################
 
+        #O Bloco a seguir recebe os valores do usuario e aloca e um vetor, trata-se de uma inserção chata pra caceta, mas nao tem outro jeito
+        #Caso voce descomentou o bloco anterior lembresse de comentar este aqui.
+
+        # Preencher vetor X
+        vetorUsuario = np.array([[]])
+        i = 0
+        for apoio in range(0, 26):
+            if i == 0:
+                valorDeX = int(1)
+            else:
+                valorDeX = int(input("Informe o valor de x%d " % i))
+            vetorUsuario = np.append(vetorUsuario, [valorDeX])
+            i = i+1
+
+        # Iniciar vetores ------------------------------------------------------------
         instante = 0
         vetorSomado = np.array([[]])
         yEncontrado = np.array([[]])
-        # treinamento ------------------------------------------------------------
+
+        # Jogar o vetor informado na rede (treinar)-------------------------------------
         v = np.array([w * vetorUsuario for w in w])
         i = 0
         for apoio in v:
             vetorSomado = np.append(vetorSomado, [np.sum(v[i])])
             i = i + 1
         # Encontrar Y  -------------------------------------------------------------
+
         i = 0
-        print(vetorSomado)
+        #print(vetorSomado)
         for apoio in vetorSomado:
             if vetorSomado[i] > 0:
                 yEncontrado = np.append(yEncontrado, [1])
@@ -229,5 +246,6 @@ while escolha != 3:
                 yEncontrado = np.append(yEncontrado, [-1])
             i = i + 1
         print(yEncontrado)
-        numero = yEncontrado.tolist().index(1)+1
+
+        numero = yEncontrado.tolist().index(1)
         print("o Vetor informado correponde ao numero: ", numero)
