@@ -12,7 +12,7 @@
 import numpy as np
 # O numpy tem uma limitação na hora de printar os arrays longs, então uso a configuração abaixo pra definir
 # o comprimento maximo do meu array antes que ele quebre a linha no terminal. Firula.
-np.set_printoptions(linewidth=120)
+np.set_printoptions(linewidth=127)
 
 # Estou criando um array de arrays, é como se fosse uma matriz, porém dentro deste array eu tenho outro(vetores)
 # linha deste array, ou seja cada elemnto deste array x, contem um vetor de amostras de X, é como se em cada linha
@@ -31,6 +31,19 @@ x = np.array([[1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1
               [1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1],
               [1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1]])
 
+# Segunda amostra, a ser utilizada apos treinar com a primeira
+x_segunda_amostra = np.array([[1, -1, -1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, 1, -1],
+                              [1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1],
+                              [1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1],
+                              [1, -1, 1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, 1, 1, 1, 1],
+                              [1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1],
+                              [1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, -1],
+                              [1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1],
+                              [1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1],
+                              [1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1],
+                              [1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1]])
+
+controlador = 1
 
 # No Y desjado eu estou dizendo oomo deve estar ativo (1) o resultado da minha função para cada numero, ou seja
 # cada linha do array abaixo representa um numero de 0 a 9 respectivamente, quando o numero eu quero que minha rede
@@ -207,6 +220,14 @@ while escolha != 3:
                     # epoca = epoca + 1
                     instante = 0
                     print("EMQ maior que erro maximo aceitavel, nova rodada.")
+
+                if emq == 0 and controlador == 1:
+                    print("\n\n\n###########################################")
+                    print("treinamento para a segunda amostra")
+                    controlador = 0
+                    x = x_segunda_amostra
+                    instante = 0
+                    epoca = 1
 
 
     ############################################################################################################
